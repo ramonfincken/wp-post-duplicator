@@ -35,7 +35,7 @@ function mtphr_duplicate_post( $original_id, $args=array(), $do_action=true ) {
 	$timestamp_gmt = ( $settings['timestamp'] == 'duplicate' ) ? strtotime($duplicate['post_date_gmt']) : current_time('timestamp',1);
 	
 	if( $settings['time_offset'] ) {
-		$offset = intval($settings['time_offset_seconds']+$settings['time_offset_minutes']*60+$settings['time_offset_hours']*3600+$settings['time_offset_days']*86400);
+		$offset = intval($settings['time_offset_seconds']+$settings['time_offset_minutes']*MINUTE_IN_SECONDS+$settings['time_offset_hours']*HOUR_IN_SECONDS+$settings['time_offset_days']*DAY_IN_SECONDS);
 		if( $settings['time_offset_direction'] == 'newer' ) {
 			$timestamp = intval($timestamp+$offset);
 			$timestamp_gmt = intval($timestamp_gmt+$offset);
